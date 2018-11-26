@@ -75,6 +75,9 @@ vrrp_instance {{ name }} {
     auth_pass {{instance.authentication_password}}
   }
   {% endif %}
+  {% if instance.mcast_src_ip is defined %}
+  mcast_src_ip {{ instance.mcast_src_ip }}
+  {% endif %}
   {% if instance.unicast_src_ip is defined and instance.unicast_peers|length > 0 %}
   unicast_src_ip {{ instance.unicast_src_ip }}
   unicast_peer {
